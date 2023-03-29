@@ -46,7 +46,43 @@ prompt pure
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-"~/.zshrc" 133L, 4818B
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(zsh-autosuggestions git tmux autojump cp fasd)
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+source $ZSH/oh-my-zsh.sh
+
+export PATH="$PATH:$(yarn global bin)":/usr/local/opt/python/libexec/bin:$HOME/bin:/snap/bin:$HOME/.cargo/bin:/$HOME/.local/bin
 
 # User configuration
 
@@ -66,6 +102,8 @@ source <(kubectl completion zsh)
 
 if [[ $TERM == xterm ]]; then TERM=xterm-256color; fi
 
+
+export KITTY_CONFIG_DIRECTORY='$HOME/.config/kitty/kitty.conf'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -91,5 +129,3 @@ export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 
 export DOCKER_BUILDKIT=0
 export COMPOSE_DOCKER_CLI_BUILD=0
-
-export PATH="$PATH:$HOME/Documents/Code/sonar-scanner/bin"
